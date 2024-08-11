@@ -65,7 +65,8 @@ jobs:
           # tar cfz all.tar.gz ${{ github.workspace }}/local/bin
           cd output
           zip -r -D ../ffmpeg-wos-arm64.zip .
-      - uses: IsaacShelton/update-existing-release@v1.3.3
+      - name: Create a Release in GitHub
+        uses: ncipollo/release-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: ffmpeg-wos-arm64.zip
+          artifacts: ffmpeg-wos-arm64.zip
+          token: ${{ secrets.PAT_TOKEN }}
